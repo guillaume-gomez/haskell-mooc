@@ -1,3 +1,4 @@
+import System.Random
 -- Made by Gomez Guillaume
 
 -- check and return the new version of display
@@ -31,7 +32,13 @@ mkguess word display n =
 starman :: String -> Int -> IO ()
 starman word n = turn word ['-' | x <- word] n
 
+dictionnary = ["guillaume", "test", "robin"]
 
-dictionnary =  ["guillaume", "test", im]
+starmandic :: Int -> IO ()
+starmandic n =
+    do
+        index <- randomRIO (0, (length dictionnary)-1) :: IO Int
+        let word = dictionnary !! index
+        starman word n
 
 
