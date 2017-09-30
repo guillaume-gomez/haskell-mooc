@@ -1,5 +1,7 @@
 import System.Random
--- Made by Gomez Guillaume
+import System.Environment
+import Control.Monad
+import Data.Set
 
 -- check and return the new version of display
 check :: String -> String -> Char -> (Bool, String)
@@ -21,7 +23,7 @@ turn word display n =
 -- function to interact with the user
 mkguess :: String -> String -> Int -> IO ()
 mkguess word display n =
-  do putStrLn (display ++ "  " ++ take n (repeat '*'))
+  do putStrLn (display ++ "  " ++ Prelude.take n (repeat '*'))
      putStr "  Enter your guess: "
      q <- getLine
      let (correct, display') = check word display (q!!0)
@@ -32,13 +34,15 @@ mkguess word display n =
 starman :: String -> Int -> IO ()
 starman word n = turn word ['-' | x <- word] n
 
-dictionnary = ["guillaume", "test", "robin"]
+dictionnary = ["programming", "haskell", "language"]
 
+
+-- pick a random word
 starmandic :: Int -> IO ()
 starmandic n =
     do
+        words <- readFile "./dictionnary"
+        let dictionnary = lines words
         index <- randomRIO (0, (length dictionnary)-1) :: IO Int
         let word = dictionnary !! index
         starman word n
-
-
