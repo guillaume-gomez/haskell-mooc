@@ -14,7 +14,7 @@ check word display c
 turn :: String -> String -> Int -> IO ()
 turn word display n =
   do if n==0
-       then putStrLn "You lose"
+       then putStrLn ("You lose, the word was " ++ word)
        else if word==display
               then putStrLn "You win!"
               else mkguess word display n
