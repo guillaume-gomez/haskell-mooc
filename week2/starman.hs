@@ -34,8 +34,6 @@ mkguess word display n =
 starman :: String -> Int -> IO ()
 starman word n = turn word ['-' | x <- word] n
 
-dictionnary = ["programming", "haskell", "language"]
-
 
 -- pick a random word
 starmandic :: Int -> IO ()
