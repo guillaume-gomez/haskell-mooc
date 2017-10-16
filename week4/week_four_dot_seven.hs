@@ -23,8 +23,13 @@ rec1 = MkPersonRecord
 	0008090067
 	[Green, Red]
 
-rec1 = MkPersonRecord
+rec2 = MkPersonRecord
 	"John Doe"
 	MkAddress("University of Joe", 8, "rue de l'inconnu", "Lost city", "00000" )
 	0008090067
 	[Green, Red, Yellow]
+
+ -- main = putStrin $ show [rec1, rec2]
+
+rec_str =  show [rec1,rec2]
+    main = putStrLn $ parseShow rec_str
